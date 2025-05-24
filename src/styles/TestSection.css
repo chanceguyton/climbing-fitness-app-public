@@ -1,0 +1,104 @@
+.test-section {
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+  font-family: "Inter", sans-serif;
+}
+
+.test-layout {
+  display: flex;
+  gap: 1rem;
+  align-items: stretch; /* Ensures same height */
+}
+
+@media (min-width: 768px) {
+  .test-layout {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+}
+
+.test-inputs {
+  flex: 1;
+  max-width: 500px;
+  padding-left: 2rem;
+}
+
+.test-inputs h2 {
+  align-self: center;
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #1a1a1a;
+}
+
+.test-inputs input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 1rem;
+  background-color: #f0f0f0;
+}
+
+.test-button {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #007AFF;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.test-button:hover {
+  background-color: #005ecb;
+}
+
+.test-instructions {
+  flex: 1;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  height: 100%; 
+  padding-right: 2rem;
+}
+
+
+.test-instruction-scroll {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 400px; 
+  padding-right: 0.5rem;
+  scrollbar-width: thin;
+}
+
+.test-instructions h2 {
+  align-self: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+}
+
+.test-instructions p,
+.test-instructions li {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+.test-instructions ul {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}

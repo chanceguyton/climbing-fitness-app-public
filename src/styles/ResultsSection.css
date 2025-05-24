@@ -1,0 +1,49 @@
+.results-section {
+  padding: 4rem 2rem;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+}
+
+.results-section h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #1a1a1a;
+  font-family: "Inter", sans-serif;
+}
+
+.results-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 4rem; /* 🔼 Increase from 2rem or 3rem to add space */
+  align-items: stretch;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+  .results-grid {
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    gap: 3rem;
+  }
+}
+
+.plan-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 400px; /* Match chart height */
+  max-width: 600px;
+  padding-right: 2rem;
+}
+
+.chart-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 400px; /* Match training plan card */
+  max-width: 600px;
+  padding-left: 2rem;
+}
