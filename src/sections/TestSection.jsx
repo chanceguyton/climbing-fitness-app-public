@@ -107,25 +107,26 @@ function TestSection() {
           For core, enter your score that you calculate from the following guidelines: 
         </p>
         <ul>
-          <li>Hold for 10 seconds
+          <li>Tuck Hold
             <ul>
-              <li>Tuck - 1 pt</li>
-              <li>L-Sit - 4 pts</li>
-              <li>Front Lever - 8 pts</li>
+              <li>10 sec - 1pt</li>
+              <li>20 sec - 2pts</li>
+              <li>30 sec - 3pts</li>
             </ul>
           </li>
-          <li>Hold for 20 seconds
+          <li>L Sit
             <ul>
-              <li>Tuck - 2 pts</li>
-              <li>L-Sit - 5 pts</li>
-              <li>Front Lever - 9 pts</li>
+              <li>10 sec - 4pts</li>
+              <li>20 sec - 5pts</li>
+              <li>30 sec - 6pts</li>
             </ul>
           </li>
-          <li>Hold for 30 seconds
+          <li>Front Lever
             <ul>
-              <li>Tuck - 3 pt</li>
-              <li>L-Sit - 6 pts</li>
-              <li>Front Lever - 10 pts</li>
+              <li>5 sec - 7pts</li>
+              <li>10 sec - 8pts</li>
+              <li>20 sec - 9pts</li>
+              <li>30+ sec - 10pts</li>
             </ul>
           </li>
         </ul>
