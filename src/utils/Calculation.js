@@ -16,13 +16,33 @@ export function calculateFromInputs(inputArray) {
   const strengthScore = () => {
     const ratio = parseFloat(pullup) / parseFloat(weight);
     if (ratio < 1) return 0;
-    return Math.round((ratio - 1) * 10);
-  };
+    if (ratio === 1) return ratio;
+    const roundRatio = Math.round(ratio * 10) / 10;
+    if (roundRatio >= 2.2) {
+      return 10;
+    } else if (roundRatio >= 2) {
+      return 9;
+    } else if (roundRatio >= 1.8) {
+      return 8;
+    } else {
+      return (ratio - 1) * 10 + 1;
+    } 
+  }; //algorithm matches scoring in video description
 
   const hangScore = () => {
     const ratio = parseFloat(maxhang) / parseFloat(weight);
     if (ratio < 1) return 0;
-    return Math.round((ratio - 1) * 10);
+    if (ratio === 1) return ratio;
+    const roundRatio = Math.round(ratio * 10) / 10;
+    if (roundRatio >= 2.2) {
+      return 10;
+    } else if (roundRatio >= 2) {
+      return 9;
+    } else if (roundRatio >= 1.8) {
+      return 8;
+    } else {
+      return (ratio - 1) * 10 + 1;
+    } 
   };
 
   const enduranceScore = () => {
