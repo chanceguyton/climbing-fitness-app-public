@@ -3,6 +3,7 @@ import HeaderSection from "../sections/HeaderSection"
 import VideoSection from "../sections/VideoSection"
 import TestSection from "../sections/TestSection"
 import ResultsSection from "../sections/ResultsSection"
+import FooterSection from "../sections/FooterSection"
 
 
 function Home(){
@@ -20,6 +21,7 @@ function Home(){
                 <TestSection/>
             </div>
             <ResultsSection/>
+            <FooterSection/>
             
         </div>
     );
