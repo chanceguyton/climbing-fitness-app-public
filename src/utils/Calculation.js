@@ -25,7 +25,7 @@ export function calculateFromInputs(inputArray) {
     } else if (roundRatio >= 1.8) {
       return 8;
     } else {
-      return (ratio - 1) * 10 + 1;
+      return (roundRatio - 1) * 10 + 1;
     } 
   }; //algorithm matches scoring in video description
 
@@ -41,7 +41,7 @@ export function calculateFromInputs(inputArray) {
     } else if (roundRatio >= 1.8) {
       return 8;
     } else {
-      return (ratio - 1) * 10 + 1;
+      return (roundRatio - 1) * 10 + 1;
     } 
   };
 
