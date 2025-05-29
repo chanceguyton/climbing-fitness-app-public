@@ -46,7 +46,7 @@ export function calculateFromInputs(inputArray) {
   };
 
   const enduranceScore = () => {
-    const inMin = Math.round(parseFloat(endurance) / 60);
+    const inMin = Math.round((parseFloat(endurance) / 60)*10)/10;
     const scoreArray = [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6];
 
     if (inMin >= 6) return 10;
