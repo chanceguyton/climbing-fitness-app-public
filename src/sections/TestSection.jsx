@@ -99,7 +99,7 @@ function TestSection() {
           <li>Enter your bodyweight, units don't matter as long as you are consistent</li>
           <li>Enter your maximum weight pullup, include bodyweight and added weight</li>
           <li>Enter the maximum weight you can hang from a 20mm edge, include bodyweight and added weight</li>
-          <li>Enter the maximum time you can hange from a bar in seconds</li>
+          <li>Enter the maximum time you can hang from a bar in seconds</li>
           <li>Enter your core score, instructions below</li>
           <li>Enter your max sport climbing grade according to the European scale</li>
         </ul>
@@ -117,8 +117,8 @@ function TestSection() {
           <li>L Sit
             <ul>
               <li>10 sec - 4pts</li>
-              <li>20 sec - 5pts</li>
-              <li>30 sec - 6pts</li>
+              <li>15 sec - 5pts</li>
+              <li>20 sec - 6pts</li>
             </ul>
           </li>
           <li>Front Lever
