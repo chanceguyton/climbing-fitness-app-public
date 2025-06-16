@@ -47,3 +47,28 @@
   max-width: 600px;
   padding-left: 2rem;
 }
+
+@media (max-width: 767px) {
+  .results-grid {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+
+  .plan-wrapper,
+  .chart-wrapper {
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .results-section {
+    padding: 2rem 1rem;
+  }
+
+  .results-section h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+}
