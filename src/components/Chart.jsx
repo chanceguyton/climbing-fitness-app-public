@@ -26,8 +26,8 @@ function RadarChartComponent({data}){
     }
 
     const chartData = [
-    { metric: "Pull-Up Strength", predicted: data[0]},
-    { metric: "Finger Strength", predicted: data[1]},
+    { metric: "Pull", predicted: data[0]},
+    { metric: "Fingers", predicted: data[1]},
     { metric: "Endurance", predicted: data[2]},
     { metric: "Core", predicted: data[3]},
     { metric: "Grade", predicted: gradeMap(data[5])/4}
@@ -43,12 +43,12 @@ function RadarChartComponent({data}){
                 <PolarAngleAxis
                     dataKey="metric"
                     tick={{
-                    fill: "#1a1a1a",           
-                    fontSize: 12,
-                    fontWeight: 500,
-                    fontFamily: "Inter, sans-serif"
+                        fill: "#1a1a1a",
+                        fontSize: 10,
+                        fontWeight: 500,
+                        fontFamily: "Inter, sans-serif"
                     }}
-                    stroke="#e0e0e0"             
+                    stroke="#e0e0e0"           
                 />
                 <PolarRadiusAxis
                     angle={30}
