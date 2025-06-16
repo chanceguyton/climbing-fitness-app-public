@@ -1,52 +1,76 @@
-import React, { useEffect, useState } from "react";
-import { useTest } from "../context/TestContext";
-import RadarChartComponent from "../components/Chart";
-import TrainingPlanCard from "../components/TrainingPlanCard";
-import AltTrainingCard from "../components/AltTrainingCard";
-import { fetchTrainingPlan } from "../utils/APIHelper";
-import "../styles/ResultsSection.css"
+import React from "react"
+import {Radar, RadarChart, PolarGrid, 
+        PolarAngleAxis, PolarRadiusAxis,
+        ResponsiveContainer} from "recharts"
+import "../styles/Chart.css"
 
-function ResultsSection() {
-  const { result } = useTest();
-  const [trainingPlan, setTrainingPlan] = useState(null);
+function RadarChartComponent({data}){
 
-  useEffect(() => {
-    if (!result || result.length === 0) return;
+    const sportGrades = [
+        "6a", "6a", "6b", "6b", "6c", "6c", "6c+", "6c+",
+        "7a", "7a", "7a+", "7a+", "7b", "7b", "7b+", "7b+",
+        "7c", "7c+", "7c+",
+        "8a", "8a", "8a+", "8a+", "8b", "8b", "8b+", "8b+",
+        "8c", "8c", "8c+", "8c+",
+        "9a", "9a", "9a+", "9a+",
+        "9b", "9b", "9b+", "9c"
+    ];
 
-    const fetchData = async () => {
-      try {
-        const plan = await fetchTrainingPlan({result});
-        setTrainingPlan(plan);
-      } catch (err) {
-        console.error("API error:", err);
-      }
-    };
+    const gradeMap = (grade) => {
+        return sportGrades.indexOf(grade) + 1;
+    }
 
-    fetchData();
-  }, [result]);
+    if (!Array.isArray(data) || data.length < 6) {
+        console.log("Not enough data")
+        return null;
+    }
 
-  if (!result || result.length === 0) {
-    return;
-  }
+    const chartData = [
+    { metric: "Pull", predicted: data[0]},
+    { metric: "Fingers", predicted: data[1]},
+    { metric: "Endurance", predicted: data[2]},
+    { metric: "Core", predicted: data[3]},
+    { metric: "Grade", predicted: gradeMap(data[5])/4}
+  ];
 
   return (
-    <section className="results-section">
-      <h1>Your Results</h1>
-      <div className="results-grid">
-        <div className="chart-wrapper">
-          <RadarChartComponent data={result} />
+    <div className="chart-outer">
+        <h2 className="chart-title">Your Climbing Profile</h2>
+         <div className="chart-container">
+            <ResponsiveContainer width="100%" height="100%">
+            <RadarChart data={chartData}>
+                <PolarGrid />
+                <PolarAngleAxis
+                    dataKey="metric"
+                    tick={{
+                        fill: "#1a1a1a",
+                        fontSize: 10,
+                        fontWeight: 500,
+                        fontFamily: "Inter, sans-serif"
+                    }}
+                    stroke="#e0e0e0"           
+                />
+                <PolarRadiusAxis
+                    angle={30}
+                    domain={[0, 10]} // ✅ This sets the radial scale
+                    tick={() => null} // optional: hides numeric labels
+                    stroke="#e0e0e0"
+                    axisLine={false}
+                    tickLine={false}
+                />
+                <Radar
+                    name="Predicted"
+                    dataKey="predicted"
+                    stroke="#007bff"
+                    fill="#007bff"
+                    fillOpacity={0.6}
+                />
+            </RadarChart>
+            </ResponsiveContainer>
         </div>
-        <div className="plan-wrapper">
-        {trainingPlan ? (
-        <TrainingPlanCard trainingPlan={trainingPlan} />
-        ) : (
-        <AltTrainingCard/>
-        )}
-        </div>
-      </div>
-      
-    </section>
-  );
+    </div>
+  )
+
 }
 
-export default ResultsSection;
+export default RadarChartComponent;
