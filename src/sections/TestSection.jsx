@@ -7,13 +7,17 @@ import "../styles/TestSection.css"
 // regex for valid climbing grade (6a to 9c+)
 const gradePattern = /^[6-9][a-c]\+?$/;
 
-function TestSection() {
+function TestSection({onSubmitScroll}) {
   const [errors, setErrors] = useState([false, false, false, false, false, false]);
   const { inputValues, setInputValues, setResult } = useTest();
 
   const handleSubmit = () => {
     const result = calculateFromInputs(inputValues);
     setResult(result);
+
+    if (onSubmitScroll) {
+      onSubmitScroll();
+    }
   };
 
   const handleTextChange = (index, value) => {
@@ -40,47 +44,47 @@ function TestSection() {
         <h2>Take the Test</h2>
          <TextInputBox
           type="number"
-          placeholder="Enter Bodyweight"
+          placeholder="Bodyweight"
           externalChange={handleTextChange}
           index={0}
         />
 
         <TextInputBox
           type="number"
-          placeholder="Enter Max Weight Pull-Up"
+          placeholder="Max Pull-Up (incl. bodyweight)"
           externalChange={handleTextChange}
           index={1}
         />
 
         <TextInputBox
           type="number"
-          placeholder="Enter Max Hang"
+          placeholder="Max Hang (20mm edge, incl. bodyweight)"
           externalChange={handleTextChange}
           index={2}
         />
 
         <TextInputBox
           type="number"
-          placeholder="Enter Hang Time (seconds)"
+          placeholder="Hang Time (sec)"
           externalChange={handleTextChange}
           index={3}
         />
 
         <TextInputBox
           type="number"
-          placeholder="Enter Core Strength Score (1-10)"
+          placeholder="Core Score (1-10)"
           externalChange={handleTextChange}
           index={4}
         />
 
         <TextInputBox
           type="text"
-          placeholder="Enter Grade (e.g., 6a+)"
+          placeholder="Enter Grade (European scale, eg., 6a+)"
           externalChange={handleTextChange}
           index={5}
         />
 
-        <button className="test-button" onClick={handleSubmit}>Calculate</button>
+        <button className="test-button" onClick={handleSubmit}>Generate Results</button>
 
         {errors[5] && (
           <p style={{ color: "red", fontSize: "0.85rem" }}>
