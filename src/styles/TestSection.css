@@ -1,39 +1,53 @@
+/* 🔧 GLOBAL FIX: Prevent overflow due to padding + borders */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .test-section {
   padding: 4rem 2rem;
   background-color: #f9f9f9;
   font-family: "Inter", sans-serif;
+  box-sizing: border-box;
 }
 
+/* Layout wrapper */
 .test-layout {
   display: flex;
-  gap: 1rem;
-  align-items: stretch; /* Ensures same height */
+  flex-direction: column;
+  gap: 2rem;
 }
 
+/* Desktop layout: side-by-side */
 @media (min-width: 768px) {
   .test-layout {
     flex-direction: row;
-    align-items: flex-start;
+    align-items: flex-start; /* top-align inputs & instructions */
     justify-content: space-between;
+    gap: 2rem;
   }
 }
 
 .test-inputs {
   flex: 1;
   max-width: 500px;
-  padding-left: 2rem;
+  width: 100%; /* ✅ prevent mobile overflow */
+  padding: 0 1rem;
+  margin: 0 auto;
 }
 
 .test-inputs h2 {
-  align-self: center;
   font-size: 1.75rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
   color: #1a1a1a;
+  text-align: center;
 }
 
 .test-inputs input {
   width: 100%;
+  max-width: 100%; /* ✅ ensure no overflow */
   padding: 0.75rem 1rem;
   margin-bottom: 1rem;
   border: 1px solid #ccc;
@@ -53,6 +67,8 @@
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  width: 100%;
+  max-width: 100%;
 }
 
 .test-button:hover {
@@ -62,27 +78,28 @@
 .test-instructions {
   flex: 1;
   max-width: 600px;
+  width: 100%; /* ✅ mobile-safe */
+  padding: 0 1rem;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  height: 100%; 
-  padding-right: 2rem;
-}
-
-
-.test-instruction-scroll {
-  flex: 1;
-  overflow-y: auto;
-  max-height: 400px; 
-  padding-right: 0.5rem;
-  scrollbar-width: thin;
+  margin: 0 auto;
 }
 
 .test-instructions h2 {
-  align-self: center;
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
   color: #1a1a1a;
+  text-align: center;
+}
+
+.test-instruction-scroll {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 400px;
+  padding-right: 0.5rem;
+  scrollbar-width: thin;
 }
 
 .test-instructions p,
@@ -101,4 +118,26 @@
   color: red;
   font-size: 0.85rem;
   margin-top: 0.5rem;
+}
+
+/* Mobile layout refinements */
+@media (max-width: 767px) {
+  .test-section {
+    padding: 2rem 1rem;
+  }
+
+  .test-inputs h2,
+  .test-instructions h2 {
+    font-size: 1.5rem;
+  }
+
+  .test-button {
+    font-size: 1rem;
+  }
+
+  .test-layout > * {
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+  }
 }
